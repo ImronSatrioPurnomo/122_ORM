@@ -1,8 +1,18 @@
 require('dotenv').config();
+const common = {
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,      // <-- pakai DB_NAME
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  dialect: process.env.DB_DIALECT,
+  // optional:
+  logging: false,
+};
 const development = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASS,
-  database: proecss.env.DB_HOST,
+  database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT
@@ -10,19 +20,19 @@ const development = {
 const test = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASS,
-  database: proecss.env.DB_HOST,
+  database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT
-};
+}
 const production = {
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASS,
-  database: proecss.env.DB_HOST,
+  database: process.env.DB_NAME,
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT
-};
+}
 
 module.exports = {
   development,
