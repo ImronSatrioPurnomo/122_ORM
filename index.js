@@ -25,3 +25,24 @@ app.post('/komik', async (requestAnimationFrame, res) => {
     } catch (error){}
     res.send({message: error.message});
 });
+
+app.get('/komik', async (req, res) => {
+    try{
+        const komik = await db.Komik.findAll();
+        res.send(komik);
+    } catch (error){}
+    res.send({message: error.message});
+});
+
+app.put('/komik/:id', async (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
+    try{
+        const komik = await db.Komik.update(data, {where: {id: id}});
+        if (!komik){
+            return res.send({message: 'data not found'});
+        }
+        res.send(komik);
+    } catch (error){}
+    res.send({message: error.message});
+});
