@@ -15,11 +15,21 @@ const test = {
   port: process.env.DB_PORT,
   dialect: process.env.DB_DIALECT
 };
+const production = {
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASS,
+  database: proecss.env.DB_HOST,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  dialect: process.env.DB_DIALECT
+};
+
 module.exports = {
   development,
   test,
   production
-} 
+}; 
+
 //{
 //  "development": {
 //    "username": "root",
