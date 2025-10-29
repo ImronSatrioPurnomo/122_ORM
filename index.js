@@ -40,9 +40,23 @@ app.put('/komik/:id', async (req, res) => {
     try{
         const komik = await db.Komik.update(data, {where: {id: id}});
         if (!komik){
-            return res.send({message: 'data not found'});
+            return res.status(404).send({message: 'data not found'});
         }
-        res.send(komik);
+        await komik.update(data);
+        res.send("komik berhasil di upgrade", komik);
     } catch (error){}
     res.send({message: error.message});
+});
+
+app.delete('/komik/:id', async (req, res) => {
+    const id = req.params.id;
+    try{
+        const komik = await db.Komik.destroy({where: {id: id}});
+        if (!komik){
+            return res.status(404).send({message: 'data not found'});
+        }
+        await komik.destroy();
+        res.send({message: 'data berhasil dihapus'});
+    } catch (error){}
+    res.status(500).send({message: error.message});
 });
